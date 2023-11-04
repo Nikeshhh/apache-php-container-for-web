@@ -8,3 +8,17 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./public-html:/var/www/html/
+  db:
+    image: mariadb
+    ports:
+      - 0.0.0.0:3306:3306
+    environment:
+      - MARIADB_ROOT_PASSWORD=qwer
+  phpadmin:
+    image: phpmyadmin
+    ports:
+      - 8080:80
+    environment:
+      - MYSQL_ROOT_PASSWORD=qwer
+      - MYSQL_USER=admin
+      - MYSQL_PASSWORD=qwer
